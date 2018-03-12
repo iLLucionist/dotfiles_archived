@@ -1,0 +1,105 @@
+! xscreensaver ---------------------------------------------------------------
+
+!font settings
+xscreensaver.Dialog.headingFont:        -*-dina-bold-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.Dialog.bodyFont:           -*-dina-medium-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.Dialog.labelFont:          -*-dina-medium-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.Dialog.unameFont:          -*-dina-medium-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.Dialog.buttonFont:         -*-dina-bold-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.Dialog.dateFont:           -*-dina-medium-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.passwd.passwdFont:         -*-dina-bold-r-*-*-10-*-*-*-*-*-*-*
+!general dialog box (affects main hostname, username, password text)
+xscreensaver.Dialog.foreground:         #EDEDED
+xscreensaver.Dialog.background:         #202020
+xscreensaver.Dialog.topShadowColor:     #202024
+xscreensaver.Dialog.bottomShadowColor:  #202024
+xscreensaver.Dialog.Button.foreground:  #EDEDFF
+xscreensaver.Dialog.Button.background:  #444
+!username/password input box and date text colour
+xscreensaver.Dialog.text.foreground:    #EDEDFF
+xscreensaver.Dialog.text.background:    #444
+xscreensaver.Dialog.internalBorderWidth:24
+xscreensaver.Dialog.borderWidth:        0
+xscreensaver.Dialog.shadowThickness:    2
+!timeout bar (background is actually determined by Dialog.text.background)
+xscreensaver.passwd.thermometer.foreground:  #A9B7C4
+xscreensaver.passwd.thermometer.background:  #202020
+xscreensaver.passwd.thermometer.width:       8
+!datestamp format--see the strftime(3) manual page for details
+xscreensaver.dateFormat:    %I:%M%P %a %b %d, %Y
+
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.hintingstyle: hintfull
+
+URxvt*depth: 32
+URxvt*buffered: true
+URxvt*background: rgba:0000/0000/0000/dddd
+URxvt*foreground: #d0d0d0
+URxvt*scrollBar: false
+URxvt*font: xft:DejaVu Sans Mono:antialias=true:pixelsize:10
+URxvt*letterSpace: -1
+URxvt*transparent: false
+URxvt*fading: 2%
+URxvt*fadeColor: grey
+URxvt*shading: 75
+URxvt*hinting: true
+URxvt*antialias: true
+
+! --- standard colors ---
+
+! black
+*color0: #191919
+
+! bright_black
+*color8: #555555
+
+! red
+*color1: #C14B4B
+
+! bright_red
+*color9: #f95959
+
+! green
+*color2: #379B5F
+
+! bright_green
+*color10: #4FF893
+
+! yellow
+*color3: #A8A859
+
+! bright_yellow
+*color11: #FFFF55
+
+! blue
+*color4: #2F2FAF
+
+! bright_blue
+*color12: #6464E1
+
+! magenta
+*color5: #954995
+
+! bright_magenta
+*color13: #E589E5
+
+! cyan
+*color6: #51A7A7
+
+! bright_cyan
+*color14: #96EDED
+
+! white
+*color7: #AAAAAA
+
+! bright_white
+*color15: #ffffff
+
+rofi.color-window: argb: 99000000, argb: FFCC3535, argb: FFA0A0A0
+rofi.color-normal: argb: 00FF0000, #D0D0D0, argb: 1AA0A0A0, argb: AACC3535, #FFFFFF
+rofi.separator-style: none
+rofi.font: DejaVu Sans Mono 11
+rofi.hide-scrollbar: true
+rofi.modi: window, run, ssh

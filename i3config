@@ -1,0 +1,191 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#
+# This config file uses keycodes (bindsym) and was written for the QWERTY
+# layout.
+#
+# To get a config file with the same key positions, but for your current
+# layout, use the i3-config-wizard
+#
+set $basekey Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# font pango:monospace 8
+#font pango:Terminus 10
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+font pango:DejaVu Sans Mono Bold 9
+
+# new_window 1pixel
+#for_window [class="^.*"] border pixel 2
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso106460
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $up k
+set $down j
+set $left h
+set $right l
+
+# use Mouse+$basekey to drag floating windows to their wanted position
+floating_modifier $basekey
+
+# start a terminal
+bindsym $basekey+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $basekey+Shift+q kill
+
+# start dmenu (a program launcher)
+#bindsym $basekey+d exec dmenu_run
+bindsym $basekey+d exec --no-startup-id rofi -show run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $basekey+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym $basekey+$left focus left
+bindsym $basekey+$down focus down
+bindsym $basekey+$up focus up
+bindsym $basekey+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $basekey+Left focus left
+bindsym $basekey+Down focus down
+bindsym $basekey+Up focus up
+bindsym $basekey+Right focus right
+
+# move focused window
+bindsym $basekey+Shift+$left move left
+bindsym $basekey+Shift+$down move down
+bindsym $basekey+Shift+$up move up
+bindsym $basekey+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym $basekey+Shift+Left move left
+bindsym $basekey+Shift+Down move down
+bindsym $basekey+Shift+Up move up
+bindsym $basekey+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $basekey+c split h
+
+# split in vertical orientation
+bindsym $basekey+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $basekey+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $basekey+s layout stacking
+bindsym $basekey+w layout tabbed
+bindsym $basekey+e layout toggle split
+
+# toggle tiling / floating
+bindsym $basekey+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $basekey+space focus mode_toggle
+
+# focus the parent container
+bindsym $basekey+a focus parent
+
+# focus the child container
+#bindsym $basekey+d focus child
+
+# move the currently focused window to the scratchpad
+bindsym $basekey+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $basekey+minus scratchpad show
+
+# switch to workspace
+bindsym $basekey+1 workspace 1
+bindsym $basekey+2 workspace 2
+bindsym $basekey+3 workspace 3
+bindsym $basekey+4 workspace 4
+bindsym $basekey+5 workspace 5
+bindsym $basekey+6 workspace 6
+bindsym $basekey+7 workspace 7
+bindsym $basekey+8 workspace 8
+bindsym $basekey+9 workspace 9
+bindsym $basekey+0 workspace 10
+
+# move focused container to workspace
+bindsym $basekey+Shift+1 move container to workspace 1
+bindsym $basekey+Shift+2 move container to workspace 2
+bindsym $basekey+Shift+3 move container to workspace 3
+bindsym $basekey+Shift+4 move container to workspace 4
+bindsym $basekey+Shift+5 move container to workspace 5
+bindsym $basekey+Shift+6 move container to workspace 6
+bindsym $basekey+Shift+7 move container to workspace 7
+bindsym $basekey+Shift+8 move container to workspace 8
+bindsym $basekey+Shift+9 move container to workspace 9
+bindsym $basekey+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $basekey+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $basekey+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $basekey+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym $left       resize shrink width 10 px or 10 ppt
+        bindsym $down       resize grow height 10 px or 10 ppt
+        bindsym $up         resize shrink height 10 px or 10 ppt
+        bindsym $right      resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink width 10 px or 10 ppt
+        bindsym Down        resize grow height 10 px or 10 ppt
+        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Right       resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $basekey+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    status_command i3blocks
+    colors {
+       focused_workspace #cc3535 #cc3535 #ffffff
+    }
+}
+
+# client.focused #cc3535 #cc3535 #ffffff #996666 #cc3535
+client.focused #713792 #713792 #ffffff #996666 #000000
+client.unfocused #000000 #000000 #a0a0a0 #a0a0a0 #000000
+client.focused_inactive #000000 #a0a0a0 #000000 #000000 #000000
+
+exec --no-startup-id xrdb -load ~/.Xdefaults
+exec --no-startup-id xfsettingsd --sm-client-disable &
+exec --no-startup-id vmware-user-suid-wrapper
+exec --no-startup-id compton --backend glx
+
+bindsym $basekey+Control+j move workspace to output left
+bindsym $basekey+Control+k move workspace to output right
+bindsym $basekey+Tab exec --no-startup-id rofi -show window
