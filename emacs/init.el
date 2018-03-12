@@ -18,24 +18,24 @@
 
     ;; VIM ;;
     evil
-    evil-collection
-    evil-escape
     evil-leader
+    evil-org
+    evil-escape
+    evil-collection
+
+    ;; ORG ;;
+    org
 
     ;; PYTHON ;;
     elpy
 
     ;; IDE FEATURES ;;
     flycheck
-    projectile
     helm
+    projectile
     helm-projectile
 
-    ;; ORG ;;
-    org
-    evil-org
-
-    ;; UI IMPORVEMENTS ;;
+    ;; UI IMPROVEMENTS ;;
     which-key
 
     ;; THEMES ;;
@@ -57,7 +57,7 @@
 (setq inhibit-startup-message t) ;; hide the startup message
 (load-theme 'espresso t) ;; load material theme
 (enable-theme 'espresso)
-(global-linum-mode t) ;; enable line numbers globally
+;(global-linum-mode t) ;; enable line numbers globally
 (tool-bar-mode -1) ;; hide tool bar
 (menu-bar-mode -1 ) ;; hide menu bar
 
@@ -70,33 +70,12 @@
 
 
 
-;; ----------------------------------------------------------------------
-;; HELM
-;; ======================================================================
-
-(require 'helm) ;; completion and narrowing framework
-(require 'helm-config) ;; enable default helm config
-
-(setq helm-split-window-inside-p t ; open helm inside current window
-      ; move to end or beginning of source when reaching top or bottom
-      helm-move-to-line-cycle-in-source t 
-      ; show/use recently opened files as suggestions
-      helm-ff-file-name-history-use-recentf t
-      ; enable fuzzy matching
-      helm-mode-fuzzy-match t
-      helm-completion-in-region-fuzzy-match t)
-
-(helm-mode 1)
-
-
-
-
 ;; -----------------------------------------------------------------
 ;; EVIL MODE
 ;; ======================================================================
 
 (setq evil-want-integration nil) ;; must be disabled to use evil collection
-
+; 
 (require 'evil)
 
 ;; evil leader key
@@ -107,9 +86,9 @@
 (evil-escape-mode)
 (setq-default evil-escape-key-sequence "jk") ;; easy escape mode and plugins
 
-;; evil collection keybindings
-(when (require 'evil-collection nil t)
-  (evil-collection-init))
+; ;; evil collection keybindings
+; (when (require 'evil-collection nil t)
+;   (evil-collection-init))
 
 ;; evil integration with org
 (require 'evil-org)
@@ -137,6 +116,34 @@
 ;; enter to open/close items in org mode
 (evil-define-key 'normal evil-org-mode-map
   (kbd "RET") 'org-cycle)
+
+
+
+
+;; ----------------------------------------------------------------------
+;; HELM
+;; ======================================================================
+
+(require 'helm) ;; completion and narrowing framework
+(require 'helm-config) ;; enable default helm config
+(require 'projectile)
+(require 'helm-projectile)
+
+(setq helm-split-window-inside-p t ; open helm inside current window
+      ; move to end or beginning of source when reaching top or bottom
+      helm-move-to-line-cycle-in-source t 
+      ; show/use recently opened files as suggestions
+      helm-ff-file-name-history-use-recentf t
+      ; enable fuzzy matching
+      helm-mode-fuzzy-match t
+      helm-completion-in-region-fuzzy-match t
+      linum-with-helm t)
+
+(helm-mode 1)
+(projectile-global-mode)
+(helm-projectile-on)
+
+
 
 
 ;; ----------------------------------------------------------------------
